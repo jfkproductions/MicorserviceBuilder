@@ -1,0 +1,236 @@
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Dal.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Linq;
+
+namespace @@ProjectName.Classes
+{
+    public   class @@TableNameGetFunctions
+    {
+		private readonly @@DBContext _context;
+        public @@TableNameGetFunctions(@@DBContext context)
+        {
+            _context = context;
+        }
+
+     public async Task<HttpResponseMessage> FunctionOperation(ReqObject reqObject)
+        {
+            switch(reqObject.Method)
+            {
+                case CrudMethod.GET:  return await RequestGet(reqObject.InformationObject, reqObject.Mode, reqObject.PrimaryKeyvalue);
+                case CrudMethod.POST: return await RequestPost(reqObject.InformationObject, reqObject.Mode);
+                case CrudMethod.DELETE: return await RequestDelete(reqObject.PrimaryKeyvalue);
+                case CrudMethod.PUT: return await Requestput(reqObject.InformationObject, reqObject.PrimaryKeyvalue);
+                default:
+                    return new HttpResponseMessage
+                    {
+                        Content = new StringContent("Incorrect Operation")
+                    };
+            }
+        }
+
+        private async  Task<HttpResponseMessage> RequestDelete(string iD)
+        {
+            string _errLog = "RequestDelete";
+
+            try
+            {
+                
+                // get 
+                int? @@PrimaryKey = int.Parse(iD);
+                @@PrimaryKey = (@@PrimaryKey == null) ? -1 : @@PrimaryKey;
+
+                if (@@PrimaryKey > 0)
+                {
+                  
+                    var @@TableNameObj = await _context.@@ContextTable.Where(cl => cl.@@PrimaryKey == @@PrimaryKey).ToListAsync();
+                    foreach (var item in @@TableNameObj)
+                    {
+                        _context.@@ContextTable.Remove(item);
+                        _context.SaveChanges();
+                    }
+                   
+
+                    return new HttpResponseMessage
+                    {
+                        Content = new StringContent("Record deleted successfully")
+                    };
+
+                }
+                else
+                {
+                    return new HttpResponseMessage
+                    {
+                        Content = new StringContent("must pass a @@TableName Id in Delete")
+                    };
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new HttpResponseMessage
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(_errLog + ex.Message + ":" + ex.StackTrace))
+                };
+            }
+        }
+
+        private async Task<HttpResponseMessage> Requestput(dynamic dataObj, object personIDreq)
+        {
+            string _errLog = "RequestPut";
+
+            try
+            {
+                long? @@PrimaryKey = dataObj?.@@PrimaryKey;
+                @@PrimaryKey = (@@PrimaryKey == null) ? -1 : @@PrimaryKey;
+
+                if (@@PrimaryKey > 0)
+                {
+                    @@ContextTable tbl@@TableName = new @@ContextTable
+                    {
+                       @@ColumnLoop
+
+                    };
+                    _context.@@ContextTable.Update(tbl@@TableName);
+                    _context.SaveChanges();
+                    @@PrimaryKey = tbl@@TableName.@@PrimaryKey;
+                    var TableObj = await _context.@@ContextTable.Where(cl => cl.@@PrimaryKey == @@PrimaryKey).ToListAsync();
+                    return FormatData(TableObj);
+                }
+                else
+                {
+                    return new HttpResponseMessage
+                    {
+                        Content = new StringContent("Must pass an Primary Id in Put")
+                    };
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new HttpResponseMessage
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(_errLog + ex.Message + ":" + ex.StackTrace))
+                };
+            }
+        }
+
+        private async  Task<HttpResponseMessage> RequestPost(dynamic dataObj, string mode)
+        {
+            string _errLog = "RequestPost";
+
+            try
+            {
+               
+                long? @@PrimaryKey = dataObj?.@@PrimaryKey;
+                @@PrimaryKey = (@@PrimaryKey == null) ? -1 :@@PrimaryKey;
+
+                if (@@PrimaryKey < 1)
+                {
+                    @@ContextTable tbl@@TableName = new @@ContextTable
+                    {
+                       @@NoPKCol
+                    };
+                    _context.@@ContextTable.Add(tbl@@TableName);
+                    _context.SaveChanges();
+                    @@PrimaryKey = tbl@@TableName.@@PrimaryKey;
+                    var TableObj = await _context.@@ContextTable.Where(cl => cl.@@PrimaryKey == @@PrimaryKey).ToListAsync();
+
+
+                    return FormatData(TableObj, mode);
+                }
+                else
+                {
+                    return new HttpResponseMessage
+                    {
+                        Content = new StringContent("Cannot pass a @@PrimaryKey in Post")
+                    };
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new HttpResponseMessage
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(_errLog + ex.Message + ":" + ex.StackTrace))
+                };
+            }
+        }
+
+        private async Task<HttpResponseMessage> RequestGet(dynamic dataObj, string mode, string ID)
+        {
+            string _errLog = "RequestGet";
+
+            try
+            {
+                
+                long? @@PrimaryKey = dataObj?.@@PrimaryKey;
+                @@PrimaryKey = (ID == null) ? @@PrimaryKey : Convert.ToInt32(ID);
+
+                if (@@PrimaryKey != null)
+                {
+
+                    _errLog += string.Format("ID {0}", @@PrimaryKey.ToString());
+
+                    var TableObj = await _context.@@ContextTable.Where(cl => cl.@@PrimaryKey == @@PrimaryKey).ToListAsync();
+                    _errLog += "found @@TableName";
+                    return FormatData(TableObj, mode);
+                }
+                else
+                {
+                    var TableObj = await _context.@@ContextTable.ToListAsync();
+                    return FormatData(TableObj, mode);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new HttpResponseMessage
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(_errLog + ex.Message + ":" + ex.StackTrace))
+                };
+            }
+        }
+
+        public HttpResponseMessage FormatData(List<@@ContextTable> ObjectToConvert, string mode = null)
+        {
+
+           bool returnRaw = false;
+            bool returnQuery = false;
+            if (!string.IsNullOrWhiteSpace(mode))
+            {
+                if (mode.ToUpper().Trim() == "RAW")
+                     returnRaw = true;
+                if (mode.Contains("Where"))
+                    returnQuery = true;
+            }
+            if (returnRaw)
+            {
+                return ReturnData.ReturnCleanData(ObjectToConvert, mode);
+            }
+            {
+
+            var records = from entity in ObjectToConvert
+                          select new
+                          {
+                              @@EntityCol
+                          };
+
+          if (returnQuery)
+                {
+                    var dynquery = records
+                    .WhereDynamic(c => mode.Replace("Where", ""))
+                    .ToList();
+                    return ReturnData.ReturnCleanData(dynquery, mode);
+                }
+                else 
+                return ReturnData.ReturnCleanData(records, mode);
+            }
+        }
+    }
+}

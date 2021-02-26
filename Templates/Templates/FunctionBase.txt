@@ -1,0 +1,60 @@
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using System.Net.Http;
+using Dal.Models;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using @@ProjectName.Classes;
+using System.Text;
+
+namespace @@ProjectName.Functions
+{
+    public class @@TableName
+    {
+        private readonly @@DBContext _context;
+        private @@TableNameGetFunctions supportFunctions;
+        public @@TableName(@@DBContext context)
+        {
+            _context = context;
+            supportFunctions = new @@TableNameGetFunctions(_context);
+
+        }
+        [FunctionName("@@TableName")]
+        [ProducesResponseType(typeof(@@ContextTable), 200)]
+        [ProducesResponseType(500)]
+        public async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "delete", "put", Route = "@@TableName")] HttpRequest req,
+            ILogger log)
+        {
+            {
+                  StringBuilder _errLog = new StringBuilder();
+                 _errLog.Append ( "Function @@TableName V1.3");
+				 log.LogInformation(_errLog.ToString());
+                try
+                {
+                    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+                    return await supportFunctions.FunctionOperation(FillReqObject.Fill(requestBody, req.Method, req?.Query["mode"], req?.Query["@@PrimaryKey"]));
+                }
+
+                catch (Exception ex)
+                {
+                    log.LogInformation(_errLog + ex.Message + ":" + ex.StackTrace);
+                    return new HttpResponseMessage
+                    {
+                        Content = new StringContent(JsonConvert.SerializeObject(_errLog + ex.Message + ":" + ex.StackTrace))
+                    };
+                }
+            }
+        }
+
+     
+    }
+}

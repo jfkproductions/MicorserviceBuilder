@@ -1,0 +1,16 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "SqlConnectionString": "Server=@@Server;Initial Catalog=@@DB;Persist Security Info=False;User ID=@@User;Password=@@Password;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=60;"
+	"KeyvaultSecret": "@KeyvaultSecret",
+    "KeyvaultUri": "@KeyvaultUri",
+    "APPINSIGHTS_INSTRUMENTATIONKEY": "@APPINSIGHTS_INSTRUMENTATIONKEY",
+    "AZURE_CLIENT_ID": "@AZURE_CLIENT_ID",
+    "AZURE_TENANT_ID": "@AZURE_TENANT_ID",
+    "AZURE_CLIENT_PWD": "@AZURE_CLIENT_PWD",
+
+
+  }
+}

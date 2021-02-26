@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Azurenuget\" />
+    <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CopyFiles\Deploy.bat" />
