@@ -1,0 +1,9 @@
+dotnet new --install "C:\Projects\4.test code\2.pvt\MicorserviceBuilder\Azurenuget\itemTemplates.3.1.1518.nupkg"
+dotnet new --install "C:\Projects\4.test code\2.pvt\MicorserviceBuilder\Azurenuget\projectTemplates.projectTemplates.3.1.1518.nupkg"
+
+dotnet new -i Microsoft.Azure.WebJobs.ProjectTemplates::3.0.10379
+dotnet new func --AzureFunctionsVersion v3 --name TestProject --StorageConnectionStringValue "UseDevelopmentStorage=true"
+dotnet new sln --name TestProject  --force
+dotnet sln TestProject.sln add TestProject.csproj --in-root
+copy function1 file over 
+dotnet add package  Microsoft.NET.Sdk.Functions

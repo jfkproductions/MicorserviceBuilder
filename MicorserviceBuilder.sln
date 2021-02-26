@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicorserviceBuilder", "MicorserviceBuilder.csproj", "{072871C4-6737-48DA-88E5-C2E263BD1B84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{30FE762A-7E31-4C95-956E-3C468B1FEFF6}"
+	ProjectSection(SolutionItems) = preProject
+		install guide.txt = install guide.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure FunctionNuget", "Azure FunctionNuget", "{0FCAC22B-6C9C-426E-B4A6-E3C28CBD665C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Users\du5089\AppData\Roaming\npm\node_modules\azure-functions-core-tools\bin\templates\itemTemplates.3.1.1518.nupkg = ..\..\..\..\Users\du5089\AppData\Roaming\npm\node_modules\azure-functions-core-tools\bin\templates\itemTemplates.3.1.1518.nupkg
+		..\..\..\..\Users\du5089\AppData\Roaming\npm\node_modules\azure-functions-core-tools\bin\templates\projectTemplates.3.1.1518.nupkg = ..\..\..\..\Users\du5089\AppData\Roaming\npm\node_modules\azure-functions-core-tools\bin\templates\projectTemplates.3.1.1518.nupkg
+		..\..\..\..\Users\du5089\AppData\Roaming\npm\node_modules\azure-functions-core-tools\bin\templates\templates.json = ..\..\..\..\Users\du5089\AppData\Roaming\npm\node_modules\azure-functions-core-tools\bin\templates\templates.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{072871C4-6737-48DA-88E5-C2E263BD1B84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{072871C4-6737-48DA-88E5-C2E263BD1B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{072871C4-6737-48DA-88E5-C2E263BD1B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{072871C4-6737-48DA-88E5-C2E263BD1B84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7990E2EB-E4AD-4E6F-871D-BDCCE3C8C688}
+	EndGlobalSection
+EndGlobal
