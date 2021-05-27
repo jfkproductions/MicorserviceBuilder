@@ -56,6 +56,22 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.pnlconnectbottem = new System.Windows.Forms.Panel();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.tabKeyvault = new System.Windows.Forms.TabPage();
+            this.pnlbuild = new System.Windows.Forms.Panel();
+            this.btnBuild = new System.Windows.Forms.Button();
+            this.grpKeyvault = new System.Windows.Forms.GroupBox();
+            this.edtClientPWD = new System.Windows.Forms.TextBox();
+            this.edtClientID = new System.Windows.Forms.TextBox();
+            this.edtTenantID = new System.Windows.Forms.TextBox();
+            this.edtKeyvaultSecret = new System.Windows.Forms.TextBox();
+            this.edtKeyvaultUrl = new System.Windows.Forms.TextBox();
+            this.lblClientPWD = new System.Windows.Forms.Label();
+            this.lblClientID = new System.Windows.Forms.Label();
+            this.lblTenantID = new System.Windows.Forms.Label();
+            this.lblKeyvaultSecret = new System.Windows.Forms.Label();
+            this.lblKeyvaultUri = new System.Windows.Forms.Label();
+            this.chkKeyvault = new System.Windows.Forms.CheckBox();
             this.TabDocker = new System.Windows.Forms.TabPage();
             this.btnStartService = new System.Windows.Forms.Button();
             this.BtnNewService = new System.Windows.Forms.Button();
@@ -64,22 +80,30 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.tabKeyvault = new System.Windows.Forms.TabPage();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.chkKeyvault = new System.Windows.Forms.CheckBox();
-            this.grpKeyvault = new System.Windows.Forms.GroupBox();
-            this.lblKeyvaultUri = new System.Windows.Forms.Label();
-            this.lblKeyvaultSecret = new System.Windows.Forms.Label();
-            this.lblTenantID = new System.Windows.Forms.Label();
-            this.lblClientID = new System.Windows.Forms.Label();
-            this.lblClientPWD = new System.Windows.Forms.Label();
-            this.edtKeyvaultUrl = new System.Windows.Forms.TextBox();
-            this.edtKeyvaultSecret = new System.Windows.Forms.TextBox();
-            this.edtTenantID = new System.Windows.Forms.TextBox();
-            this.edtClientID = new System.Windows.Forms.TextBox();
-            this.edtClientPWD = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnBuild = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tabPipeline = new System.Windows.Forms.TabPage();
+            this.ChkPipelineMain = new System.Windows.Forms.CheckBox();
+            this.chkpipelineNuget = new System.Windows.Forms.CheckBox();
+            this.grpPipelinemain = new System.Windows.Forms.GroupBox();
+            this.edtServiceConnection = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.edtImgRepo = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.edtcontainerRegistrySIT = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.edtcontainerRegistryDev = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.EdtContainerNameSit = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.EdtContainerNameDev = new System.Windows.Forms.TextBox();
+            this.grpNuget = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.EdtBranchMain = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.edtPipelineNuget = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.EdtArtifactName = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.pnltop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
@@ -90,12 +114,15 @@
             this.grpServerDetails.SuspendLayout();
             this.grpProjectname.SuspendLayout();
             this.pnlconnectbottem.SuspendLayout();
+            this.tabKeyvault.SuspendLayout();
+            this.pnlbuild.SuspendLayout();
+            this.grpKeyvault.SuspendLayout();
             this.TabDocker.SuspendLayout();
             this.grpDocker.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.tabKeyvault.SuspendLayout();
-            this.grpKeyvault.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.tabPipeline.SuspendLayout();
+            this.grpPipelinemain.SuspendLayout();
+            this.grpNuget.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -114,7 +141,7 @@
             this.startToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(54, 26);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
             this.startToolStripMenuItem.Text = "Start";
             // 
             // exitToolStripMenuItem
@@ -162,6 +189,7 @@
             // 
             this.tabcontrolmain.Controls.Add(this.TabProjectdetails);
             this.tabcontrolmain.Controls.Add(this.tabKeyvault);
+            this.tabcontrolmain.Controls.Add(this.tabPipeline);
             this.tabcontrolmain.Controls.Add(this.TabDocker);
             this.tabcontrolmain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabcontrolmain.Location = new System.Drawing.Point(0, 0);
@@ -180,7 +208,7 @@
             this.TabProjectdetails.Location = new System.Drawing.Point(4, 25);
             this.TabProjectdetails.Margin = new System.Windows.Forms.Padding(4);
             this.TabProjectdetails.Name = "TabProjectdetails";
-            this.TabProjectdetails.Size = new System.Drawing.Size(801, 432);
+            this.TabProjectdetails.Size = new System.Drawing.Size(801, 434);
             this.TabProjectdetails.TabIndex = 2;
             this.TabProjectdetails.Text = "Project";
             this.TabProjectdetails.UseVisualStyleBackColor = true;
@@ -192,7 +220,7 @@
             this.loadingbox.Location = new System.Drawing.Point(0, 308);
             this.loadingbox.Margin = new System.Windows.Forms.Padding(4);
             this.loadingbox.Name = "loadingbox";
-            this.loadingbox.Size = new System.Drawing.Size(801, 70);
+            this.loadingbox.Size = new System.Drawing.Size(801, 72);
             this.loadingbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.loadingbox.TabIndex = 28;
             this.loadingbox.TabStop = false;
@@ -387,22 +415,184 @@
             // 
             this.pnlconnectbottem.Controls.Add(this.btnNext);
             this.pnlconnectbottem.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlconnectbottem.Location = new System.Drawing.Point(0, 378);
+            this.pnlconnectbottem.Location = new System.Drawing.Point(0, 380);
             this.pnlconnectbottem.Margin = new System.Windows.Forms.Padding(4);
             this.pnlconnectbottem.Name = "pnlconnectbottem";
             this.pnlconnectbottem.Size = new System.Drawing.Size(801, 54);
             this.pnlconnectbottem.TabIndex = 20;
             this.pnlconnectbottem.Visible = false;
             // 
+            // btnNext
+            // 
+            this.btnNext.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNext.BackgroundImage")));
+            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Location = new System.Drawing.Point(680, 4);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(112, 43);
+            this.btnNext.TabIndex = 2;
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // tabKeyvault
+            // 
+            this.tabKeyvault.Controls.Add(this.pnlbuild);
+            this.tabKeyvault.Controls.Add(this.grpKeyvault);
+            this.tabKeyvault.Controls.Add(this.chkKeyvault);
+            this.tabKeyvault.Location = new System.Drawing.Point(4, 25);
+            this.tabKeyvault.Name = "tabKeyvault";
+            this.tabKeyvault.Size = new System.Drawing.Size(801, 432);
+            this.tabKeyvault.TabIndex = 4;
+            this.tabKeyvault.Text = "Keyvault";
+            this.tabKeyvault.UseVisualStyleBackColor = true;
+            // 
+            // pnlbuild
+            // 
+            this.pnlbuild.Controls.Add(this.btnBuild);
+            this.pnlbuild.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlbuild.Location = new System.Drawing.Point(0, 378);
+            this.pnlbuild.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlbuild.Name = "pnlbuild";
+            this.pnlbuild.Size = new System.Drawing.Size(801, 54);
+            this.pnlbuild.TabIndex = 21;
+            // 
+            // btnBuild
+            // 
+            this.btnBuild.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuild.BackgroundImage")));
+            this.btnBuild.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuild.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuild.Location = new System.Drawing.Point(680, 7);
+            this.btnBuild.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuild.Name = "btnBuild";
+            this.btnBuild.Size = new System.Drawing.Size(112, 43);
+            this.btnBuild.TabIndex = 2;
+            this.btnBuild.UseVisualStyleBackColor = true;
+            this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
+            // 
+            // grpKeyvault
+            // 
+            this.grpKeyvault.Controls.Add(this.edtClientPWD);
+            this.grpKeyvault.Controls.Add(this.edtClientID);
+            this.grpKeyvault.Controls.Add(this.edtTenantID);
+            this.grpKeyvault.Controls.Add(this.edtKeyvaultSecret);
+            this.grpKeyvault.Controls.Add(this.edtKeyvaultUrl);
+            this.grpKeyvault.Controls.Add(this.lblClientPWD);
+            this.grpKeyvault.Controls.Add(this.lblClientID);
+            this.grpKeyvault.Controls.Add(this.lblTenantID);
+            this.grpKeyvault.Controls.Add(this.lblKeyvaultSecret);
+            this.grpKeyvault.Controls.Add(this.lblKeyvaultUri);
+            this.grpKeyvault.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grpKeyvault.Location = new System.Drawing.Point(0, 21);
+            this.grpKeyvault.Name = "grpKeyvault";
+            this.grpKeyvault.Size = new System.Drawing.Size(801, 288);
+            this.grpKeyvault.TabIndex = 1;
+            this.grpKeyvault.TabStop = false;
+            this.grpKeyvault.Text = "Keyvault Settings ";
+            this.grpKeyvault.Visible = false;
+            // 
+            // edtClientPWD
+            // 
+            this.edtClientPWD.Location = new System.Drawing.Point(178, 172);
+            this.edtClientPWD.Name = "edtClientPWD";
+            this.edtClientPWD.Size = new System.Drawing.Size(586, 22);
+            this.edtClientPWD.TabIndex = 9;
+            // 
+            // edtClientID
+            // 
+            this.edtClientID.Location = new System.Drawing.Point(178, 132);
+            this.edtClientID.Name = "edtClientID";
+            this.edtClientID.Size = new System.Drawing.Size(586, 22);
+            this.edtClientID.TabIndex = 8;
+            // 
+            // edtTenantID
+            // 
+            this.edtTenantID.Location = new System.Drawing.Point(178, 95);
+            this.edtTenantID.Name = "edtTenantID";
+            this.edtTenantID.Size = new System.Drawing.Size(586, 22);
+            this.edtTenantID.TabIndex = 7;
+            // 
+            // edtKeyvaultSecret
+            // 
+            this.edtKeyvaultSecret.Location = new System.Drawing.Point(178, 59);
+            this.edtKeyvaultSecret.Name = "edtKeyvaultSecret";
+            this.edtKeyvaultSecret.Size = new System.Drawing.Size(586, 22);
+            this.edtKeyvaultSecret.TabIndex = 6;
+            // 
+            // edtKeyvaultUrl
+            // 
+            this.edtKeyvaultUrl.Location = new System.Drawing.Point(178, 24);
+            this.edtKeyvaultUrl.Name = "edtKeyvaultUrl";
+            this.edtKeyvaultUrl.Size = new System.Drawing.Size(586, 22);
+            this.edtKeyvaultUrl.TabIndex = 5;
+            // 
+            // lblClientPWD
+            // 
+            this.lblClientPWD.AutoSize = true;
+            this.lblClientPWD.Location = new System.Drawing.Point(8, 177);
+            this.lblClientPWD.Name = "lblClientPWD";
+            this.lblClientPWD.Size = new System.Drawing.Size(108, 17);
+            this.lblClientPWD.TabIndex = 4;
+            this.lblClientPWD.Text = "Client Password";
+            // 
+            // lblClientID
+            // 
+            this.lblClientID.AutoSize = true;
+            this.lblClientID.Location = new System.Drawing.Point(8, 135);
+            this.lblClientID.Name = "lblClientID";
+            this.lblClientID.Size = new System.Drawing.Size(56, 17);
+            this.lblClientID.TabIndex = 3;
+            this.lblClientID.Text = "ClientID";
+            // 
+            // lblTenantID
+            // 
+            this.lblTenantID.AutoSize = true;
+            this.lblTenantID.Location = new System.Drawing.Point(8, 98);
+            this.lblTenantID.Name = "lblTenantID";
+            this.lblTenantID.Size = new System.Drawing.Size(66, 17);
+            this.lblTenantID.TabIndex = 2;
+            this.lblTenantID.Text = "TenantID";
+            // 
+            // lblKeyvaultSecret
+            // 
+            this.lblKeyvaultSecret.AutoSize = true;
+            this.lblKeyvaultSecret.Location = new System.Drawing.Point(8, 62);
+            this.lblKeyvaultSecret.Name = "lblKeyvaultSecret";
+            this.lblKeyvaultSecret.Size = new System.Drawing.Size(107, 17);
+            this.lblKeyvaultSecret.TabIndex = 1;
+            this.lblKeyvaultSecret.Text = "Keyvault Secret";
+            // 
+            // lblKeyvaultUri
+            // 
+            this.lblKeyvaultUri.AutoSize = true;
+            this.lblKeyvaultUri.Location = new System.Drawing.Point(8, 29);
+            this.lblKeyvaultUri.Name = "lblKeyvaultUri";
+            this.lblKeyvaultUri.Size = new System.Drawing.Size(94, 17);
+            this.lblKeyvaultUri.TabIndex = 0;
+            this.lblKeyvaultUri.Text = "Keyvault URL";
+            // 
+            // chkKeyvault
+            // 
+            this.chkKeyvault.AutoSize = true;
+            this.chkKeyvault.Dock = System.Windows.Forms.DockStyle.Top;
+            this.chkKeyvault.Location = new System.Drawing.Point(0, 0);
+            this.chkKeyvault.Name = "chkKeyvault";
+            this.chkKeyvault.Size = new System.Drawing.Size(801, 21);
+            this.chkKeyvault.TabIndex = 0;
+            this.chkKeyvault.Text = "Use Keyvault";
+            this.chkKeyvault.UseVisualStyleBackColor = true;
+            this.chkKeyvault.CheckedChanged += new System.EventHandler(this.chkKeyvault_CheckedChanged);
+            // 
             // TabDocker
             // 
+            this.TabDocker.Controls.Add(this.label7);
             this.TabDocker.Controls.Add(this.btnStartService);
             this.TabDocker.Controls.Add(this.BtnNewService);
             this.TabDocker.Controls.Add(this.grpDocker);
             this.TabDocker.Location = new System.Drawing.Point(4, 25);
             this.TabDocker.Name = "TabDocker";
             this.TabDocker.Padding = new System.Windows.Forms.Padding(3);
-            this.TabDocker.Size = new System.Drawing.Size(801, 432);
+            this.TabDocker.Size = new System.Drawing.Size(801, 434);
             this.TabDocker.TabIndex = 3;
             this.TabDocker.Text = "Commands";
             this.TabDocker.UseVisualStyleBackColor = true;
@@ -471,167 +661,236 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(422, 20);
             this.toolStripStatusLabel1.Text = "Fill in the Project name, location, database details and connect";
             // 
-            // tabKeyvault
+            // label7
             // 
-            this.tabKeyvault.Controls.Add(this.panel1);
-            this.tabKeyvault.Controls.Add(this.grpKeyvault);
-            this.tabKeyvault.Controls.Add(this.chkKeyvault);
-            this.tabKeyvault.Location = new System.Drawing.Point(4, 25);
-            this.tabKeyvault.Name = "tabKeyvault";
-            this.tabKeyvault.Size = new System.Drawing.Size(801, 432);
-            this.tabKeyvault.TabIndex = 4;
-            this.tabKeyvault.Text = "Keyvault";
-            this.tabKeyvault.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(47, 152);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(466, 17);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "If Application does not run instal \"npm i -g azure-functions-core-tools@3\"";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // btnNext
+            // tabPipeline
             // 
-            this.btnNext.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNext.BackgroundImage")));
-            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNext.Location = new System.Drawing.Point(680, 4);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(4);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(112, 43);
-            this.btnNext.TabIndex = 2;
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            this.tabPipeline.Controls.Add(this.grpNuget);
+            this.tabPipeline.Controls.Add(this.grpPipelinemain);
+            this.tabPipeline.Controls.Add(this.chkpipelineNuget);
+            this.tabPipeline.Controls.Add(this.ChkPipelineMain);
+            this.tabPipeline.Location = new System.Drawing.Point(4, 25);
+            this.tabPipeline.Name = "tabPipeline";
+            this.tabPipeline.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPipeline.Size = new System.Drawing.Size(801, 434);
+            this.tabPipeline.TabIndex = 5;
+            this.tabPipeline.Text = "Add Pipeline Files";
+            this.tabPipeline.UseVisualStyleBackColor = true;
+            this.tabPipeline.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // chkKeyvault
+            // ChkPipelineMain
             // 
-            this.chkKeyvault.AutoSize = true;
-            this.chkKeyvault.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkKeyvault.Location = new System.Drawing.Point(0, 0);
-            this.chkKeyvault.Name = "chkKeyvault";
-            this.chkKeyvault.Size = new System.Drawing.Size(801, 21);
-            this.chkKeyvault.TabIndex = 0;
-            this.chkKeyvault.Text = "Use Keyvault";
-            this.chkKeyvault.UseVisualStyleBackColor = true;
-            this.chkKeyvault.CheckedChanged += new System.EventHandler(this.chkKeyvault_CheckedChanged);
+            this.ChkPipelineMain.AutoSize = true;
+            this.ChkPipelineMain.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ChkPipelineMain.Location = new System.Drawing.Point(3, 3);
+            this.ChkPipelineMain.Name = "ChkPipelineMain";
+            this.ChkPipelineMain.Size = new System.Drawing.Size(795, 21);
+            this.ChkPipelineMain.TabIndex = 0;
+            this.ChkPipelineMain.Text = "Add Pipeline file to Project";
+            this.ChkPipelineMain.UseVisualStyleBackColor = true;
             // 
-            // grpKeyvault
+            // chkpipelineNuget
             // 
-            this.grpKeyvault.Controls.Add(this.edtClientPWD);
-            this.grpKeyvault.Controls.Add(this.edtClientID);
-            this.grpKeyvault.Controls.Add(this.edtTenantID);
-            this.grpKeyvault.Controls.Add(this.edtKeyvaultSecret);
-            this.grpKeyvault.Controls.Add(this.edtKeyvaultUrl);
-            this.grpKeyvault.Controls.Add(this.lblClientPWD);
-            this.grpKeyvault.Controls.Add(this.lblClientID);
-            this.grpKeyvault.Controls.Add(this.lblTenantID);
-            this.grpKeyvault.Controls.Add(this.lblKeyvaultSecret);
-            this.grpKeyvault.Controls.Add(this.lblKeyvaultUri);
-            this.grpKeyvault.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grpKeyvault.Location = new System.Drawing.Point(0, 21);
-            this.grpKeyvault.Name = "grpKeyvault";
-            this.grpKeyvault.Size = new System.Drawing.Size(801, 350);
-            this.grpKeyvault.TabIndex = 1;
-            this.grpKeyvault.TabStop = false;
-            this.grpKeyvault.Text = "Keyvault Settings ";
+            this.chkpipelineNuget.AutoSize = true;
+            this.chkpipelineNuget.Dock = System.Windows.Forms.DockStyle.Top;
+            this.chkpipelineNuget.Location = new System.Drawing.Point(3, 24);
+            this.chkpipelineNuget.Name = "chkpipelineNuget";
+            this.chkpipelineNuget.Size = new System.Drawing.Size(795, 21);
+            this.chkpipelineNuget.TabIndex = 1;
+            this.chkpipelineNuget.Text = "Add Pipeline file to DAL to push to Nuget Artifact";
+            this.chkpipelineNuget.UseVisualStyleBackColor = true;
             // 
-            // lblKeyvaultUri
+            // grpPipelinemain
             // 
-            this.lblKeyvaultUri.AutoSize = true;
-            this.lblKeyvaultUri.Location = new System.Drawing.Point(8, 29);
-            this.lblKeyvaultUri.Name = "lblKeyvaultUri";
-            this.lblKeyvaultUri.Size = new System.Drawing.Size(94, 17);
-            this.lblKeyvaultUri.TabIndex = 0;
-            this.lblKeyvaultUri.Text = "Keyvault URL";
+            this.grpPipelinemain.Controls.Add(this.label14);
+            this.grpPipelinemain.Controls.Add(this.EdtBranchMain);
+            this.grpPipelinemain.Controls.Add(this.label13);
+            this.grpPipelinemain.Controls.Add(this.EdtContainerNameDev);
+            this.grpPipelinemain.Controls.Add(this.label12);
+            this.grpPipelinemain.Controls.Add(this.EdtContainerNameSit);
+            this.grpPipelinemain.Controls.Add(this.label11);
+            this.grpPipelinemain.Controls.Add(this.edtcontainerRegistryDev);
+            this.grpPipelinemain.Controls.Add(this.label10);
+            this.grpPipelinemain.Controls.Add(this.edtcontainerRegistrySIT);
+            this.grpPipelinemain.Controls.Add(this.label9);
+            this.grpPipelinemain.Controls.Add(this.edtImgRepo);
+            this.grpPipelinemain.Controls.Add(this.label8);
+            this.grpPipelinemain.Controls.Add(this.edtServiceConnection);
+            this.grpPipelinemain.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grpPipelinemain.Location = new System.Drawing.Point(3, 45);
+            this.grpPipelinemain.Name = "grpPipelinemain";
+            this.grpPipelinemain.Size = new System.Drawing.Size(795, 209);
+            this.grpPipelinemain.TabIndex = 2;
+            this.grpPipelinemain.TabStop = false;
+            this.grpPipelinemain.Text = "PipeLine File For Project";
             // 
-            // lblKeyvaultSecret
+            // edtServiceConnection
             // 
-            this.lblKeyvaultSecret.AutoSize = true;
-            this.lblKeyvaultSecret.Location = new System.Drawing.Point(8, 62);
-            this.lblKeyvaultSecret.Name = "lblKeyvaultSecret";
-            this.lblKeyvaultSecret.Size = new System.Drawing.Size(107, 17);
-            this.lblKeyvaultSecret.TabIndex = 1;
-            this.lblKeyvaultSecret.Text = "Keyvault Secret";
+            this.edtServiceConnection.Location = new System.Drawing.Point(247, 33);
+            this.edtServiceConnection.Name = "edtServiceConnection";
+            this.edtServiceConnection.Size = new System.Drawing.Size(527, 22);
+            this.edtServiceConnection.TabIndex = 0;
             // 
-            // lblTenantID
+            // label8
             // 
-            this.lblTenantID.AutoSize = true;
-            this.lblTenantID.Location = new System.Drawing.Point(8, 98);
-            this.lblTenantID.Name = "lblTenantID";
-            this.lblTenantID.Size = new System.Drawing.Size(66, 17);
-            this.lblTenantID.TabIndex = 2;
-            this.lblTenantID.Text = "TenantID";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 33);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(235, 17);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Docker Registry Service Connection";
             // 
-            // lblClientID
+            // label9
             // 
-            this.lblClientID.AutoSize = true;
-            this.lblClientID.Location = new System.Drawing.Point(8, 135);
-            this.lblClientID.Name = "lblClientID";
-            this.lblClientID.Size = new System.Drawing.Size(56, 17);
-            this.lblClientID.TabIndex = 3;
-            this.lblClientID.Text = "ClientID";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 71);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(159, 17);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Image Repository Name";
             // 
-            // lblClientPWD
+            // edtImgRepo
             // 
-            this.lblClientPWD.AutoSize = true;
-            this.lblClientPWD.Location = new System.Drawing.Point(8, 177);
-            this.lblClientPWD.Name = "lblClientPWD";
-            this.lblClientPWD.Size = new System.Drawing.Size(108, 17);
-            this.lblClientPWD.TabIndex = 4;
-            this.lblClientPWD.Text = "Client Password";
+            this.edtImgRepo.Location = new System.Drawing.Point(247, 71);
+            this.edtImgRepo.Name = "edtImgRepo";
+            this.edtImgRepo.Size = new System.Drawing.Size(239, 22);
+            this.edtImgRepo.TabIndex = 2;
             // 
-            // edtKeyvaultUrl
+            // label10
             // 
-            this.edtKeyvaultUrl.Location = new System.Drawing.Point(178, 24);
-            this.edtKeyvaultUrl.Name = "edtKeyvaultUrl";
-            this.edtKeyvaultUrl.Size = new System.Drawing.Size(586, 22);
-            this.edtKeyvaultUrl.TabIndex = 5;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 105);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(150, 17);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Container Registry SIT";
             // 
-            // edtKeyvaultSecret
+            // edtcontainerRegistrySIT
             // 
-            this.edtKeyvaultSecret.Location = new System.Drawing.Point(178, 59);
-            this.edtKeyvaultSecret.Name = "edtKeyvaultSecret";
-            this.edtKeyvaultSecret.Size = new System.Drawing.Size(586, 22);
-            this.edtKeyvaultSecret.TabIndex = 6;
+            this.edtcontainerRegistrySIT.Location = new System.Drawing.Point(166, 102);
+            this.edtcontainerRegistrySIT.Name = "edtcontainerRegistrySIT";
+            this.edtcontainerRegistrySIT.Size = new System.Drawing.Size(209, 22);
+            this.edtcontainerRegistrySIT.TabIndex = 4;
             // 
-            // edtTenantID
+            // label11
             // 
-            this.edtTenantID.Location = new System.Drawing.Point(178, 95);
-            this.edtTenantID.Name = "edtTenantID";
-            this.edtTenantID.Size = new System.Drawing.Size(586, 22);
-            this.edtTenantID.TabIndex = 7;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(381, 103);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(154, 17);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Container Registry Dev";
             // 
-            // edtClientID
+            // edtcontainerRegistryDev
             // 
-            this.edtClientID.Location = new System.Drawing.Point(178, 132);
-            this.edtClientID.Name = "edtClientID";
-            this.edtClientID.Size = new System.Drawing.Size(586, 22);
-            this.edtClientID.TabIndex = 8;
+            this.edtcontainerRegistryDev.Location = new System.Drawing.Point(541, 102);
+            this.edtcontainerRegistryDev.Name = "edtcontainerRegistryDev";
+            this.edtcontainerRegistryDev.Size = new System.Drawing.Size(233, 22);
+            this.edtcontainerRegistryDev.TabIndex = 6;
             // 
-            // edtClientPWD
+            // label12
             // 
-            this.edtClientPWD.Location = new System.Drawing.Point(178, 172);
-            this.edtClientPWD.Name = "edtClientPWD";
-            this.edtClientPWD.Size = new System.Drawing.Size(586, 22);
-            this.edtClientPWD.TabIndex = 9;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 135);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(126, 17);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Registry Name SIT";
             // 
-            // panel1
+            // EdtContainerNameSit
             // 
-            this.panel1.Controls.Add(this.btnBuild);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 378);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(801, 54);
-            this.panel1.TabIndex = 21;
-            this.panel1.Visible = false;
+            this.EdtContainerNameSit.Location = new System.Drawing.Point(166, 132);
+            this.EdtContainerNameSit.Name = "EdtContainerNameSit";
+            this.EdtContainerNameSit.Size = new System.Drawing.Size(209, 22);
+            this.EdtContainerNameSit.TabIndex = 8;
             // 
-            // btnBuild
+            // label13
             // 
-            this.btnBuild.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuild.BackgroundImage")));
-            this.btnBuild.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuild.Enabled = false;
-            this.btnBuild.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuild.Location = new System.Drawing.Point(680, 7);
-            this.btnBuild.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBuild.Name = "btnBuild";
-            this.btnBuild.Size = new System.Drawing.Size(112, 43);
-            this.btnBuild.TabIndex = 2;
-            this.btnBuild.UseVisualStyleBackColor = true;
-            this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(381, 138);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(130, 17);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Registry Name Dev";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // EdtContainerNameDev
+            // 
+            this.EdtContainerNameDev.Location = new System.Drawing.Point(541, 135);
+            this.EdtContainerNameDev.Name = "EdtContainerNameDev";
+            this.EdtContainerNameDev.Size = new System.Drawing.Size(233, 22);
+            this.EdtContainerNameDev.TabIndex = 10;
+            this.EdtContainerNameDev.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // grpNuget
+            // 
+            this.grpNuget.Controls.Add(this.label16);
+            this.grpNuget.Controls.Add(this.EdtArtifactName);
+            this.grpNuget.Controls.Add(this.label15);
+            this.grpNuget.Controls.Add(this.edtPipelineNuget);
+            this.grpNuget.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grpNuget.Location = new System.Drawing.Point(3, 254);
+            this.grpNuget.Name = "grpNuget";
+            this.grpNuget.Size = new System.Drawing.Size(795, 93);
+            this.grpNuget.TabIndex = 3;
+            this.grpNuget.TabStop = false;
+            this.grpNuget.Text = "Pipeline For Nuget";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 169);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(103, 17);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Trigger Branch";
+            // 
+            // EdtBranchMain
+            // 
+            this.EdtBranchMain.Location = new System.Drawing.Point(166, 166);
+            this.EdtBranchMain.Name = "EdtBranchMain";
+            this.EdtBranchMain.Size = new System.Drawing.Size(209, 22);
+            this.EdtBranchMain.TabIndex = 12;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 27);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(103, 17);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "Trigger Branch";
+            // 
+            // edtPipelineNuget
+            // 
+            this.edtPipelineNuget.Location = new System.Drawing.Point(228, 21);
+            this.edtPipelineNuget.Name = "edtPipelineNuget";
+            this.edtPipelineNuget.Size = new System.Drawing.Size(329, 22);
+            this.edtPipelineNuget.TabIndex = 14;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 59);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(216, 17);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "Publish Vsts Feed(Artifact Name)";
+            // 
+            // EdtArtifactName
+            // 
+            this.EdtArtifactName.Location = new System.Drawing.Point(228, 59);
+            this.EdtArtifactName.Name = "EdtArtifactName";
+            this.EdtArtifactName.Size = new System.Drawing.Size(329, 22);
+            this.EdtArtifactName.TabIndex = 16;
             // 
             // frmmain
             // 
@@ -661,16 +920,23 @@
             this.grpProjectname.ResumeLayout(false);
             this.grpProjectname.PerformLayout();
             this.pnlconnectbottem.ResumeLayout(false);
+            this.tabKeyvault.ResumeLayout(false);
+            this.tabKeyvault.PerformLayout();
+            this.pnlbuild.ResumeLayout(false);
+            this.grpKeyvault.ResumeLayout(false);
+            this.grpKeyvault.PerformLayout();
             this.TabDocker.ResumeLayout(false);
+            this.TabDocker.PerformLayout();
             this.grpDocker.ResumeLayout(false);
             this.grpDocker.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.tabKeyvault.ResumeLayout(false);
-            this.tabKeyvault.PerformLayout();
-            this.grpKeyvault.ResumeLayout(false);
-            this.grpKeyvault.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.tabPipeline.ResumeLayout(false);
+            this.tabPipeline.PerformLayout();
+            this.grpPipelinemain.ResumeLayout(false);
+            this.grpPipelinemain.PerformLayout();
+            this.grpNuget.ResumeLayout(false);
+            this.grpNuget.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -727,8 +993,32 @@
         private System.Windows.Forms.Label lblTenantID;
         private System.Windows.Forms.Label lblKeyvaultSecret;
         private System.Windows.Forms.Label lblKeyvaultUri;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlbuild;
         private System.Windows.Forms.Button btnBuild;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TabPage tabPipeline;
+        private System.Windows.Forms.GroupBox grpPipelinemain;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox EdtContainerNameDev;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox EdtContainerNameSit;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox edtcontainerRegistryDev;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox edtcontainerRegistrySIT;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox edtImgRepo;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox edtServiceConnection;
+        private System.Windows.Forms.CheckBox chkpipelineNuget;
+        private System.Windows.Forms.CheckBox ChkPipelineMain;
+        private System.Windows.Forms.GroupBox grpNuget;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox EdtArtifactName;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox edtPipelineNuget;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox EdtBranchMain;
     }
 }
 

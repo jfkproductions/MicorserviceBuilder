@@ -13,9 +13,9 @@ dotnet sln @@ProjectName.sln add @@ProjectName/@@ProjectName.csproj --in-root
 
 
 cd "@@Path"
-dotnet new classlib -f netcoreapp3.1 --name Dal
+dotnet new classlib -f netcoreapp3.1 --name Dal@@ProjectName
 
-cd "@@Path/Dal"
+cd "@@Path/Dal@@ProjectName"
 dotnet add package Microsoft.EntityFrameworkCore.Design 
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 
@@ -24,8 +24,8 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
  dotnet tool update --global dotnet-ef --version 3.1.4
  dotnet ef dbcontext scaffold "Server=@@Server;Database=@@DB;User ID=@@User;Password=@@Password" Microsoft.EntityFrameworkCore.SqlServer -o Models -f
  cd "@@Path"
- dotnet sln @@ProjectName.sln add Dal\Dal.csproj --in-root
- dotnet add "@@Path/@@ProjectName/@@ProjectName.csproj" reference "@@Path/Dal/Dal.csproj"
+ dotnet sln @@ProjectName.sln add Dal@@ProjectName\Dal@@ProjectName.csproj --in-root
+ dotnet add "@@Path/@@ProjectName/@@ProjectName.csproj" reference "@@Path/Dal@@ProjectName/Dal@@ProjectName.csproj"
  del "@@Path\Dal\models\sysdiagrams.cs"
  echo "File Created by Microservice maker. " > "@@Path/Readme.txt
 exit

@@ -1,0 +1,28 @@
+1 add keyvault to docker enviroment done 
+2 add Redis cache handler 
+3 Add scripts to create Keyvault via cli (check if CLi installed and install)
+4 Add Scripts to add Redis Cache to System 
+5 Add Pipeline File 
+6 add scripts to generete container registry 
+7 Add Event Grid 
+8 Signal R 
+
+V2 ----
+1 ) Build code in Node JS Option
+
+
+V3
+-- Project save with Settings 
+-- open code in Vs Code 
+-- Unit tests 
+
+v4 
+1  ) Aggregate Builder.
+v5 
+-- CLI creat git repo 
+-- Add Whitesource 
+-- Add sonarcube
+
+v6  
+-- link to Swagger Code Builder 
+-- Api mannagement in CLI 

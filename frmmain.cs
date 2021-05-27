@@ -104,6 +104,8 @@ namespace MicorserviceBuilder
             grpServerDetails.Visible = false;
             grpProjectname.Visible = false;
             loadingbox.Visible = true;
+            tabcontrolmain.TabPages.Remove(tabKeyvault);
+            tabcontrolmain.TabPages.Add(TabProjectdetails);
 
             string batfile  = Application.StartupPath + "\\CopyFiles\\Deploy.bat";
             string settingsfile= Application.StartupPath + "\\CopyFiles\\local.settings.json";
@@ -112,7 +114,9 @@ namespace MicorserviceBuilder
             string CrudEnum = Application.StartupPath + "\\CopyFiles\\CrudEnum.cs";
             string FillReqObject = Application.StartupPath + "\\CopyFiles\\FillReqObject.cs";
             string ReqObject = Application.StartupPath + "\\CopyFiles\\ReqObject.cs";
-            
+            string keyvaultclass = Application.StartupPath + "\\CopyFiles\\Keyvault.cs";
+
+
 
 
             string Dockerfile = Application.StartupPath + "\\Templates\\Dockerfile";
@@ -166,6 +170,7 @@ namespace MicorserviceBuilder
                     System.IO.File.Copy(settingsfile, txtFolder.Text + "\\" + txtProjectName.Text.Trim() + "\\local.settings.json", true);
                     System.IO.File.Copy(Dockerignorefile, txtFolder.Text +  "\\.dockerignore", true);
                     System.IO.File.Copy(Dockerfile, txtFolder.Text + "\\Dockerfile", true);
+
                     //classes Returndata 20201109 fix 
 
                     if (!Directory.Exists(txtFolder.Text + "\\" + txtProjectName.Text.Trim() + "\\Classes"))
@@ -197,24 +202,36 @@ namespace MicorserviceBuilder
                     string Dockersettings = File.ReadAllText(txtFolder.Text + "\\Dockerfile");
                     Dockersettings = Dockersettings.Replace("@@ProjectName", txtProjectName.Text.Trim());
                     Dockersettings = Dockersettings.Replace("@@Path", txtFolder.Text.Trim());
-                    Dockersettings = Dockersettings.Replace("@@Server", txtServer.Text.Trim());
-                    Dockersettings = Dockersettings.Replace("@@DB", txtdatabase.Text.Trim());
-                    Dockersettings = Dockersettings.Replace("@@User", txtusername.Text.Trim());
-                    Dockersettings = Dockersettings.Replace("@@Password", txtPassword.Text.Trim());
+                    if (chkKeyvault.Checked)
+                    {
+                        Dockersettings = Dockersettings.Replace("@@KeyvaultSecret", edtKeyvaultSecret.Text.Trim());
+                        Dockersettings = Dockersettings.Replace("@@KeyvaultUri", edtKeyvaultUrl.Text.Trim());
+                        Dockersettings = Dockersettings.Replace("@@AZURE_CLIENT_ID", edtClientID.Text.Trim());
+                        Dockersettings = Dockersettings.Replace("@@AZURE_TENANT_ID", edtTenantID.Text.Trim());
+                        Dockersettings = Dockersettings.Replace("@@AZURE_CLIENT_PWD", edtClientPWD.Text.Trim());
+                    }
+                    else
+                    {
+                        Dockersettings = Dockersettings.Replace("@@Server", txtServer.Text.Trim());
+                        Dockersettings = Dockersettings.Replace("@@DB", txtdatabase.Text.Trim());
+                        Dockersettings = Dockersettings.Replace("@@User", txtusername.Text.Trim());
+                        Dockersettings = Dockersettings.Replace("@@Password", txtPassword.Text.Trim());
+
+                    }
+
+
                     File.WriteAllText(txtFolder.Text  + "\\Dockerfile", Dockersettings);
 
+                    File.Copy(Application.StartupPath + "\\CopyFiles\\Keyvault.cs", txtFolder.Text + "\\" + txtProjectName.Text.Trim() + "\\Classes\\Keyvault.cs");
 
-                    var KeyvaultClass = File.ReadAllText(Application.StartupPath + "\\CopyFiles\\Keyvault.cs");
+                    var KeyvaultClass = File.ReadAllText(txtFolder.Text + "\\" + txtProjectName.Text.Trim() + "\\Classes\\Keyvault.cs");
                     KeyvaultClass = KeyvaultClass.Replace("@@ProjectName", txtProjectName.Text.Trim());
-                    File.WriteAllText(Application.StartupPath + "\\CopyFiles\\Keyvault.cs", KeyvaultClass);
+                    File.WriteAllText(txtFolder.Text + "\\" + txtProjectName.Text.Trim() + "\\Classes\\Keyvault.cs", KeyvaultClass);
 
                     string textsettings = File.ReadAllText(txtFolder.Text + "\\" + txtProjectName.Text.Trim() + "\\local.settings.json");
                     textsettings = textsettings.Replace("@@ProjectName", txtProjectName.Text.Trim());
                     textsettings = textsettings.Replace("@@Path", txtFolder.Text.Trim());
-                    textsettings = textsettings.Replace("@@Server", txtServer.Text.Trim());
-                    textsettings = textsettings.Replace("@@DB", txtdatabase.Text.Trim());
-                    textsettings = textsettings.Replace("@@User", txtusername.Text.Trim());
-                    textsettings = textsettings.Replace("@@Password", txtPassword.Text.Trim());
+                  
                     if( chkKeyvault.Checked)
                     {
                         textsettings = textsettings.Replace("@@KeyvaultSecret", edtKeyvaultSecret.Text.Trim());
@@ -223,12 +240,21 @@ namespace MicorserviceBuilder
                         textsettings = textsettings.Replace("@@AZURE_TENANT_ID", edtTenantID.Text.Trim());
                         textsettings = textsettings.Replace("@@AZURE_CLIENT_PWD", edtClientPWD.Text.Trim());
                     }
+                    else
+                    {
+                        textsettings = textsettings.Replace("@@Server", txtServer.Text.Trim());
+                        textsettings = textsettings.Replace("@@DB", txtdatabase.Text.Trim());
+                        textsettings = textsettings.Replace("@@User", txtusername.Text.Trim());
+                        textsettings = textsettings.Replace("@@Password", txtPassword.Text.Trim());
+                    }
                     File.WriteAllText(txtFolder.Text + "\\" + txtProjectName.Text.Trim() + "\\local.settings.json", textsettings);
                     
                     BuildClasses(TablesDS);
                 }
                 catch (Exception ex)
                 {
+                    var error = ex.Message;
+                    MessageBox.Show(ex.Message);
                     toolStripStatusLabel1.Text = "An Error occurred during project creation";
                     Console.WriteLine(ex.StackTrace.ToString());
                 }
@@ -300,17 +326,18 @@ namespace MicorserviceBuilder
                         if (chkKeyvault.Checked)
                         {
                             connstring.Clear();
-                            connstring.Append("if (Keyvault.GetConnectionString(ref connectionString))");
-                            connstring.Append("{");
-                            connstring.Append("builder.Services.AddDbContext<@@DBContext>(options => options.UseSqlServer(connectionString).UseLazyLoadingProxies());");
-                            connstring.Append("}");
+                            connstring.Append(@"string connectionString = ""Connection Not Made"";" + System.Environment.NewLine);
+                            connstring.Append("if (Keyvault.GetConnectionString(ref connectionString))" + System.Environment.NewLine);
+                            connstring.Append("{" + System.Environment.NewLine);
+                            connstring.Append("builder.Services.AddDbContext<@@DBContext>(options => options.UseSqlServer(connectionString).UseLazyLoadingProxies());" + System.Environment.NewLine);
+                            connstring.Append("}" + System.Environment.NewLine);
                             Pretextst = Pretextst.Replace("@@ifKeyvault", connstring.ToString());
                         }
                         else
                         {
                             connstring.Clear();
-                            connstring.Append(@"var connectionString = Environment.GetEnvironmentVariable(""SqlConnectionString"");");
-                            connstring.Append(@"builder.Services.AddDbContext<@@DBContext>(options => options.UseSqlServer(connectionString).UseLazyLoadingProxies()); }");
+                            connstring.Append(@"var connectionString = Environment.GetEnvironmentVariable(""SqlConnectionString"");" + System.Environment.NewLine);
+                            connstring.Append(@"builder.Services.AddDbContext<@@DBContext>(options => options.UseSqlServer(connectionString).UseLazyLoadingProxies()); }" + System.Environment.NewLine);
                             Pretextst = Pretextst.Replace("@@ifKeyvault", connstring.ToString());
                         }
                         File.WriteAllText(txtFolder.Text.Trim() + "\\" + txtProjectName.Text.Trim() + "\\Startup.cs", Pretextst);
@@ -590,6 +617,7 @@ namespace MicorserviceBuilder
         {
             tabcontrolmain.TabPages.Remove(TabDocker);
             tabcontrolmain.TabPages.Remove(tabKeyvault);
+            tabcontrolmain.TabPages.Remove(tabPipeline);
         }
 
         private void txtDockerCmds_TextChanged(object sender, EventArgs e)
@@ -641,7 +669,27 @@ namespace MicorserviceBuilder
 
         private void chkKeyvault_CheckedChanged(object sender, EventArgs e)
         {
-            chkKeyvault.Checked = grpKeyvault.Visible;
+             grpKeyvault.Visible= chkKeyvault.Checked ;
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

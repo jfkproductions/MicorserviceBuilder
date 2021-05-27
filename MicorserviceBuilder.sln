@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{30FE762A-7E31-4C95-956E-3C468B1FEFF6}"
 	ProjectSection(SolutionItems) = preProject
 		install guide.txt = install guide.txt
+		Todo.txt = Todo.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure FunctionNuget", "Azure FunctionNuget", "{0FCAC22B-6C9C-426E-B4A6-E3C28CBD665C}"
